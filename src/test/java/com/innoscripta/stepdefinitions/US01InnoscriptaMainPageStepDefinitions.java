@@ -4,14 +4,13 @@ import com.innoscripta.pages.InnoscriptaMainPage;
 import com.innoscripta.utilities.BrowserUtils;
 import com.innoscripta.utilities.Driver;
 import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.Point;
 import org.testng.Assert;
 
 import java.util.List;
-import java.util.Map;
 
 public class US01InnoscriptaMainPageStepDefinitions {
     InnoscriptaMainPage page = new InnoscriptaMainPage();
@@ -45,47 +44,47 @@ public class US01InnoscriptaMainPageStepDefinitions {
                 switch (item) {
                     case "Unsere Leistungen":
                         page.unsereLeistungenMenuItem.click();
-                        Thread.sleep(3000);
+                        BrowserUtils.waitFor(3);
                         classNames = page.unsereLeistungenMenuItem.getAttribute("class");//getCssValue(cssStr);
                         break;
                     case "innoscripta logo":
                         page.logoInnoscriptaMenuItem.click();
-                        Thread.sleep(3000);
+                        BrowserUtils.waitFor(3);
                         classNames = page.willkommenMenuItem.getAttribute("class");
                         break;
                     case "Unsere Software":
                         page.unsereSoftwareMenuItem.click();
-                        Thread.sleep(3000);
+                        BrowserUtils.waitFor(3);
                         classNames = page.unsereSoftwareMenuItem.getAttribute("class");
                         break;
                     case "Success Stories":
                         page.successStoriesMenuItem.click();
-                        Thread.sleep(3000);
+                        BrowserUtils.waitFor(3);
                         classNames = page.successStoriesMenuItem.getAttribute("class");
                         break;
                     case "Über uns":
                         page.uberUnsMenuItem.click();
-                        Thread.sleep(3000);
+                        BrowserUtils.waitFor(3);
                         classNames = page.uberUnsMenuItem.getAttribute("class");
                         break;
                     case "Soziales Engagement":
                         page.sozialesEngagementMenuItem.click();
-                        Thread.sleep(3000);
+                        BrowserUtils.waitFor(3);
                         classNames = page.sozialesEngagementMenuItem.getAttribute("class");
                         break;
                     case "Kontakt":
                         page.kontaktMenuItem.click();
-                        Thread.sleep(3000);
+                        BrowserUtils.waitFor(3);
                         classNames = page.kontaktMenuItem.getAttribute("class");
                         break;
                     case "Willkommen":
                         page.willkommenMenuItem.click();
-                        Thread.sleep(3000);
+                        BrowserUtils.waitFor(3);
                         classNames = page.willkommenMenuItem.getAttribute("class");
                         break;
                     case "Kostenloses Erstgespräch vereinbaren":
                         page.kostenlosesErstgesprachVereinbarenMenuItem.click();
-                        Thread.sleep(3000);
+                        BrowserUtils.waitFor(3);
                         classNames = page.kostenlosesErstgesprachVereinbarenMenuItem.getAttribute("class");
                         break;
                     default:
@@ -97,4 +96,16 @@ public class US01InnoscriptaMainPageStepDefinitions {
         Driver.closeDriver();
     }
 
+    @And("user click on -Für Bewerber- menu button on the header")
+    public void userClickOnMenuButtonOnTheHeader() {
+        page.furBewerberMenuItem.click();
+    }
+
+    @Then("user verifies that {string} opened")
+    public void userVerifiesThatOpened(String url) {
+        BrowserUtils.waitForPageToLoad(5);
+        String currentUrl = Driver.getDriver().getCurrentUrl();
+        Assert.assertTrue(currentUrl.contains(url));
+        Driver.closeDriver();
+    }
 }
