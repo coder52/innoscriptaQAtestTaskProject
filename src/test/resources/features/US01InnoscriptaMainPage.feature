@@ -1,4 +1,4 @@
-Feature: US_01 The functions of the elements in the header should work properly
+Feature: US_01 The functions of the elements in the main page should work properly
 
   Background: User reaches the menu items
     Given user is on page "http://sff.innoscripta.com/"
