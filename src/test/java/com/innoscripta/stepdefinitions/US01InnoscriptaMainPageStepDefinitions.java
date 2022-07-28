@@ -112,9 +112,13 @@ public class US01InnoscriptaMainPageStepDefinitions {
     @Then("user clicks on {string} button")
     public void userClicksOnButton(String buttonText) {
         Driver.getDriver().findElement(By.xpath("//*[. = '"+buttonText+"']")).click();
+
+
+    }
+    @And("user clicks on {string} button in iframe")
+    public void userClicksOnButtonInIframe(String arg0) {
         BrowserUtils.waitFor(1);
         BrowserUtils.clickElementInFrame(page.appointmentFrame, page.cookiesAblehnenButton);
-
     }
 
     @And("user clicks to today&time on calendar and accepts appointment")
@@ -160,5 +164,41 @@ public class US01InnoscriptaMainPageStepDefinitions {
     public void userBooksAnAppointment() {
         BrowserUtils.waitFor(1);
         page.terminBuchenButton.click();
+    }
+
+    @And("user fills out the flyer form")
+    public void userFillsOutTheFlyerForm(DataTable table) {
+        Map<String, String> map = table.asMap(String.class, String.class);
+        for (String key: map.keySet()) {
+            switch (key){
+                case "Vorname":
+                    page.flyerVornameInput.sendKeys(map.get(key));
+                    break;
+                case "Nachname":
+                    page.flyerNachnameInput.sendKeys(map.get(key));
+                    break;
+                case "Unternehmensname":
+                    page.flyerUnternehmensnameInput.sendKeys(map.get(key));
+                    break;
+                case "E-Mail":
+                    page.flyerEMailInput.sendKeys(map.get(key));
+                    break;
+                default:
+                    Assert.fail(key + " not implemented for search fields");
+            }
+        }
+    }
+
+
+    @Then("user clicks on download button")
+    public void userClicksOnDownloadButton() {
+        BrowserUtils.waitFor(1);
+        page.downloadFlyerButton.click();
+    }
+
+    @And("user verifies that the process begin")
+    public void userVerifiesThatTheProcessBegin() {
+        String text = page.downloadResultHeader.getText();
+        Assert.assertTrue(text.toLowerCase().contains("vielen dank"));
     }
 }

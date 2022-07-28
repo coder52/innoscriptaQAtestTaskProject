@@ -18,6 +18,7 @@ Feature: US_01 The functions of the elements in the main page should work proper
 
   Scenario: TC_04_US_01 The user should be able to make a free appointment.
     Then user clicks on "Termin für kostenlose Erstberatung vereinbaren" button
+    And user clicks on "Cookies Ablehnen" button in iframe
     And user clicks to today&time on calendar and accepts appointment
     Then user fills out the appointment form
     |Name       |Testmann                                   |
@@ -26,3 +27,12 @@ Feature: US_01 The functions of the elements in the main page should work proper
     |Info       |Dies ist eine Testaufgabe, bitte ignorieren|
     And user books an appointment
 
+  Scenario: TC_05_US_01 user should be able to download flyer.
+    Then user clicks on "Kurzerklärung über die Forschungszulage herunterladen" button
+    And user fills out the flyer form
+      |Vorname         |Test         |
+      |Nachname        |Testmann     |
+      |Unternehmensname|testfirma    |
+      |E-Mail          |test@test.com|
+    Then user clicks on download button
+    And user verifies that the process begin

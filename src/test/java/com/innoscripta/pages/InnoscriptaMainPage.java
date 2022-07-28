@@ -70,4 +70,22 @@ public class InnoscriptaMainPage extends BasePage{
 
     @FindBy(xpath = "(//*[. = 'Termin buchen'])[1]")
     public WebElement terminBuchenButton;
+
+    @FindBy(css = ".download-flyer-section input[placeholder=\"Vorname\"]")
+    public WebElement flyerVornameInput;
+
+    @FindBy(css = ".download-flyer-section input[placeholder=\"Nachname\"]")
+    public WebElement flyerNachnameInput;
+
+    @FindBy(css = ".download-flyer-section input[placeholder=\"Unternehmensname\"]")
+    public WebElement flyerUnternehmensnameInput;
+
+    @FindBy(css = ".download-flyer-section input[placeholder=\"E-Mail\"]")
+    public WebElement flyerEMailInput;
+
+    @FindBy(css = ".flyer-download-modal__button-wrap .download-button")
+    public WebElement downloadFlyerButton;
+
+    @FindBy(css = ".download-result__header")
+    public WebElement downloadResultHeader;
 }
