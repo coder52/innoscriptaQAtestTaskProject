@@ -8,9 +8,12 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
 import java.util.List;
+import java.util.Map;
 
 public class US01InnoscriptaMainPageStepDefinitions {
     InnoscriptaMainPage page = new InnoscriptaMainPage();
@@ -94,7 +97,7 @@ public class US01InnoscriptaMainPageStepDefinitions {
         }
     }
 
-    @And("user click on -Für Bewerber- menu button on the header")
+    @And("user clicks on -Für Bewerber- menu button on the header")
     public void userClickOnMenuButtonOnTheHeader() {
         page.furBewerberMenuItem.click();
     }
@@ -104,5 +107,58 @@ public class US01InnoscriptaMainPageStepDefinitions {
         BrowserUtils.waitForPageToLoad(5);
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertTrue(currentUrl.contains(url));
+    }
+
+    @Then("user clicks on {string} button")
+    public void userClicksOnButton(String buttonText) {
+        Driver.getDriver().findElement(By.xpath("//*[. = '"+buttonText+"']")).click();
+        BrowserUtils.waitFor(1);
+        BrowserUtils.clickElementInFrame(page.appointmentFrame, page.cookiesAblehnenButton);
+
+    }
+
+    @And("user clicks to today&time on calendar and accepts appointment")
+    public void userClicksTodayTimeOnClandar() {
+        BrowserUtils.waitFor(1);
+        // switch in to frame
+        Driver.getDriver().switchTo().frame(page.calendarFrame);
+        List<WebElement> elements = page.daysInCalendar;
+        for (WebElement element:elements) {
+            if(element.getCssValue("color").equals("rgba(0, 96, 230, 1)")){
+                element.click();
+                break;
+            }
+        }
+        page.timeButtonInCalendar.click();
+        page.timeAcceptationButton.click();
+    }
+
+    @Then("user fills out the appointment form")
+    public void userFillsOutTheAppointmentForm(DataTable table) {
+        Map<String, String> map = table.asMap(String.class, String.class);
+        for (String key: map.keySet()) {
+            switch (key){
+                case "Name":
+                    page.nameInput.sendKeys(map.get(key));
+                    break;
+                case "E-Mail":
+                    page.emailInput.sendKeys(map.get(key));
+                    break;
+                case "Unternehmen":
+                    page.firmaNameInput.sendKeys(map.get(key));
+                    break;
+                case "Info":
+                    page.infoInput.sendKeys(map.get(key));
+                    break;
+                default:
+                    Assert.fail(key + " not implemented for search fields");
+            }
+        }
+    }
+
+    @And("user books an appointment")
+    public void userBooksAnAppointment() {
+        BrowserUtils.waitFor(1);
+        page.terminBuchenButton.click();
     }
 }
