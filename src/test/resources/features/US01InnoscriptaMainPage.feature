@@ -16,7 +16,7 @@ Feature: US_01 The functions of the elements in the main page should work proper
     And user clicks on -Für Bewerber- menu button on the header
     Then user verifies that "https://hr.innoscripta.com/" opened
 
-  Scenario: TC_04_US_01 user can make an appointment
+  Scenario: TC_04_US_01 The user should be able to make a free appointment.
     Then user clicks on "Termin für kostenlose Erstberatung vereinbaren" button
     And user clicks to today&time on calendar and accepts appointment
     Then user fills out the appointment form
@@ -25,3 +25,4 @@ Feature: US_01 The functions of the elements in the main page should work proper
     |Unternehmen|testfirma                                  |
     |Info       |Dies ist eine Testaufgabe, bitte ignorieren|
     And user books an appointment
+
