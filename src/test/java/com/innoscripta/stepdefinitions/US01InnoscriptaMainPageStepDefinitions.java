@@ -18,7 +18,6 @@ public class US01InnoscriptaMainPageStepDefinitions {
     @Given("user is on page {string}")
     public void user_is_on_page(String url) {
         Driver.getDriver().get(url);
-        Driver.getDriver().manage().window().maximize();
     }
 
     @When("user clicks {string} on privacy settings window")
@@ -36,7 +35,7 @@ public class US01InnoscriptaMainPageStepDefinitions {
 
 
     @Then("user clicks menu items on header and verifies that the screen slides to the proper position")
-    public void userClicksOnHeader(DataTable table) throws InterruptedException {
+    public void userClicksOnHeader(DataTable table) {
         List<List<String>> rows = table.asLists(String.class);
         for (List<String> row : rows) {
             for (String item : row) {
@@ -93,7 +92,6 @@ public class US01InnoscriptaMainPageStepDefinitions {
                 Assert.assertTrue(classNames.contains("item_active"));
             }
         }
-        Driver.closeDriver();
     }
 
     @And("user click on -Für Bewerber- menu button on the header")
@@ -106,6 +104,5 @@ public class US01InnoscriptaMainPageStepDefinitions {
         BrowserUtils.waitForPageToLoad(5);
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertTrue(currentUrl.contains(url));
-        Driver.closeDriver();
     }
 }
