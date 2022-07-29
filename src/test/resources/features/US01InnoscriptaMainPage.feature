@@ -26,6 +26,7 @@ Feature: US_01 The functions of the elements in the main page should work proper
     |Unternehmen|testfirma                                  |
     |Info       |Dies ist eine Testaufgabe, bitte ignorieren|
     And user books an appointment
+    Then user verifies that appointment is booked
 
   Scenario: TC_05_US_01 user should be able to download flyer.
     Then user clicks on "Kurzerklärung über die Forschungszulage herunterladen" button

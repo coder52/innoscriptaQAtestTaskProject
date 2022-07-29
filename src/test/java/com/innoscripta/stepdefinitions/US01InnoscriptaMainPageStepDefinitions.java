@@ -10,6 +10,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -124,7 +125,7 @@ public class US01InnoscriptaMainPageStepDefinitions {
 
     @And("user clicks to today&time on calendar and accepts appointment")
     public void userClicksTodayTimeOnClandar() {
-        BrowserUtils.waitFor(1);
+        BrowserUtils.waitForPageToLoad(5);
         // switch in to frame
         Driver.getDriver().switchTo().frame(page.calendarFrame);
         List<WebElement> elements = page.daysInCalendar;
@@ -140,7 +141,8 @@ public class US01InnoscriptaMainPageStepDefinitions {
         if(!hasTime){
             userClicksOnButton("Keine Zeiten im Juli");
             for (WebElement element:elements) {
-                if(element.getCssValue("color").equals("rgba(0, 96, 230, 1)")){
+                if(element.getCssValue("color").equals("rgba(0, 96, 230, 1)") ||
+                        element.getCssValue("color").equals("rgba(0, 96, 230)")){
                     element.click();
                     break;
                 }
@@ -178,6 +180,12 @@ public class US01InnoscriptaMainPageStepDefinitions {
     public void userBooksAnAppointment() {
         BrowserUtils.waitFor(1);
         page.terminBuchenButton.click();
+    }
+
+    @Then("user verifies that appointment is booked")
+    public void userVerifiesThatAppointmentIsBooked() {
+        String text = page.appointmentAcceptedText.getText();
+        Assert.assertTrue(text.toLowerCase().contains("bestätigt"));
     }
 
     @And("user fills out the flyer form")
@@ -263,4 +271,5 @@ public class US01InnoscriptaMainPageStepDefinitions {
         String text = page.datenSendenUndHerunterladenDownloadResultHeader.getText();
         Assert.assertTrue(text.toLowerCase().contains("vielen dank"));
     }
+
 }
