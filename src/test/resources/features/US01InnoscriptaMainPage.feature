@@ -35,4 +35,19 @@ Feature: US_01 The functions of the elements in the main page should work proper
       |Unternehmensname|testfirma    |
       |E-Mail          |test@test.com|
     Then user clicks on download button
-    And user verifies that the process begin
+    And user verifies that the flyer process begin
+
+  Scenario: TC_06_US_01 "Beratungsgespräch vereinbaren" process must work properly.
+    Then user scroll down the screen to "Beratungsgespräch vereinbaren" position
+    And user fills out the consultation form
+      |Vorname         |Test         |
+      |Nachname        |Testmann     |
+      |E-Mail          |test@test.com|
+      |Telefon         |01234567     |
+      |Unternehmensname|testfirma    |
+      |Ihre Nachricht  |Dies ist eine Testaufgabe, bitte ignorieren|
+    Then user clicks on "Absenden" button
+    And user verifies that the request was successfully sent
+
+
+    

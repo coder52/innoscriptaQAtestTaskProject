@@ -9,6 +9,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -196,9 +197,33 @@ public class US01InnoscriptaMainPageStepDefinitions {
         page.downloadFlyerButton.click();
     }
 
-    @And("user verifies that the process begin")
+    @And("user verifies that the flyer process begin")
     public void userVerifiesThatTheProcessBegin() {
         String text = page.downloadResultHeader.getText();
+        Assert.assertTrue(text.toLowerCase().contains("vielen dank"));
+    }
+
+    @Then("user scroll down the screen to {string} position")
+    public void userScrollDownTheScreenToPosition(String arg0) {
+        BrowserUtils.waitFor(1);
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("arguments[0].scrollBy(1000,0)", page.consultationVornameInput);
+    }
+
+    @And("user fills out the consultation form")
+    public void userFillsOutTheConsultationForm(DataTable table) {
+        Map<String, String> map = table.asMap(String.class, String.class);
+        for (String key: map.keySet()) {
+            WebElement input = Driver.getDriver()
+                    .findElement(By.cssSelector("#initialConsultation *[placeholder=\""+key+"\"]"));
+            input.sendKeys(map.get(key));
+        }
+
+    }
+
+    @And("user verifies that the request was successfully sent")
+    public void userVerifiesThatTheRequestWasSuccessfullySent() {
+        String text = page.consultationResultHeader.getText();
         Assert.assertTrue(text.toLowerCase().contains("vielen dank"));
     }
 }
