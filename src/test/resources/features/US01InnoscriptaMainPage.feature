@@ -49,5 +49,13 @@ Feature: US_01 The functions of the elements in the main page should work proper
     Then user clicks on "Absenden" button
     And user verifies that the request was successfully sent
 
-
-    
+  Scenario: TC_07_US_01 "Transparenz in F&E-Prozessen" query in the customer's must be sent successfully.
+    Then user scroll down the screen to "warum Transparenz in F&E-Prozessen" position
+    And user fills out the download-doc form
+      |Vorname         |Test         |
+      |Nachname        |Testmann     |
+      |E-Mail          |test@test.com|
+      |Telefon         |01234567     |
+      |Unternehmensname|testfirma    |
+    Then user clicks on -Daten senden und herunterladen- button
+    And user verifies that documnet was successfully downloaded

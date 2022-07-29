@@ -89,10 +89,14 @@ public class InnoscriptaMainPage extends BasePage{
     @FindBy(css = ".download-result__header")
     public WebElement downloadResultHeader;
 
-    @FindBy(css = "#initialConsultation input[placeholder=\"Vorname\"]")
-    public WebElement consultationVornameInput;
-
     @FindBy(css = ".consultation-result__header")
     public WebElement consultationResultHeader;
+
+    @FindBy(css = ".download-button")
+    public WebElement datenSendenUndHerunterladenButton;
+
+    @FindBy(css = ".download-result__header")
+    public WebElement datenSendenUndHerunterladenDownloadResultHeader;
+
 
 }

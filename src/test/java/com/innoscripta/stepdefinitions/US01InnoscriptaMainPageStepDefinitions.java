@@ -128,12 +128,25 @@ public class US01InnoscriptaMainPageStepDefinitions {
         // switch in to frame
         Driver.getDriver().switchTo().frame(page.calendarFrame);
         List<WebElement> elements = page.daysInCalendar;
+        boolean hasTime = false;
         for (WebElement element:elements) {
             if(element.getCssValue("color").equals("rgba(0, 96, 230, 1)")){
                 element.click();
+                hasTime = true;
                 break;
             }
         }
+        // if no appointment time this month get from next month
+        if(!hasTime){
+            userClicksOnButton("Keine Zeiten im Juli");
+            for (WebElement element:elements) {
+                if(element.getCssValue("color").equals("rgba(0, 96, 230, 1)")){
+                    element.click();
+                    break;
+                }
+            }
+        }
+        BrowserUtils.waitFor(1);
         page.timeButtonInCalendar.click();
         page.timeAcceptationButton.click();
     }
@@ -204,11 +217,14 @@ public class US01InnoscriptaMainPageStepDefinitions {
     }
 
     @Then("user scroll down the screen to {string} position")
-    public void userScrollDownTheScreenToPosition(String arg0) {
+    public void userScrollDownTheScreenToPosition(String targetText) {
         BrowserUtils.waitFor(1);
-        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
-        js.executeScript("arguments[0].scrollBy(1000,0)", page.consultationVornameInput);
+        WebElement targetElement = Driver.getDriver()
+                .findElement(By.xpath("//div[contains(text(),'" + targetText + "')]"));
+        BrowserUtils.scrollToElement(targetElement);
     }
+
+
 
     @And("user fills out the consultation form")
     public void userFillsOutTheConsultationForm(DataTable table) {
@@ -224,6 +240,27 @@ public class US01InnoscriptaMainPageStepDefinitions {
     @And("user verifies that the request was successfully sent")
     public void userVerifiesThatTheRequestWasSuccessfullySent() {
         String text = page.consultationResultHeader.getText();
+        Assert.assertTrue(text.toLowerCase().contains("vielen dank"));
+    }
+
+    @And("user fills out the download-doc form")
+    public void userFillsOutTheDownloadDocForm(DataTable table) {
+        Map<String, String> map = table.asMap(String.class, String.class);
+        for (String key: map.keySet()) {
+            WebElement input = Driver.getDriver()
+                    .findElement(By.cssSelector(".download-doc *[placeholder=\""+key+"\"]"));
+            input.sendKeys(map.get(key));
+        }
+    }
+
+    @Then("user clicks on -Daten senden und herunterladen- button")
+    public void userClicksOnDatenSendenUndHerunterladenButton() {
+        page.datenSendenUndHerunterladenButton.click();
+    }
+
+    @And("user verifies that documnet was successfully downloaded")
+    public void userVerifiesThatDocumnetWasSuccessfullyDownloaded() {
+        String text = page.datenSendenUndHerunterladenDownloadResultHeader.getText();
         Assert.assertTrue(text.toLowerCase().contains("vielen dank"));
     }
 }
