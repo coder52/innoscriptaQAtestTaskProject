@@ -71,6 +71,9 @@ public class InnoscriptaMainPage extends BasePage{
     @FindBy(xpath = "(//*[. = 'Termin buchen'])[1]")
     public WebElement terminBuchenButton;
 
+    @FindBy(xpath = "//*[. = 'Bestätigt']")
+    public WebElement appointmentAcceptedText;
+
     @FindBy(css = ".download-flyer-section input[placeholder=\"Vorname\"]")
     public WebElement flyerVornameInput;
 
