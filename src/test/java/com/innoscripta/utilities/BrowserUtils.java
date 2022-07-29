@@ -22,6 +22,11 @@ public class BrowserUtils {
         }
     }
 
+    /**
+     * This method clicks an element using the java script executor.
+     *
+     * @param jsPath java script path of an element.
+     */
     public static void clickOnElementWithJS(String jsPath){
         JavascriptExecutor jse = (JavascriptExecutor) Driver.getDriver();
         WebElement element = (WebElement) jse.executeScript("return "+jsPath);
@@ -41,6 +46,7 @@ public class BrowserUtils {
             e.printStackTrace();
         }
     }
+
     /**
      *  This method switches the frame from default to another one inside the default frame.
      *
@@ -55,6 +61,18 @@ public class BrowserUtils {
         // switch back to default content
         Driver.getDriver().switchTo().defaultContent();
     }
+
+    /**
+     *  This method scrolls the screen to the location of an element.
+     *
+     * @param targetElement element in the location where we want to scroll the screen.
+     */
+    public static void scrollToElement(WebElement targetElement) {
+        String elementLocation = targetElement.getLocation().toString();
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollBy"+elementLocation);
+    }
 }
+
 
 
