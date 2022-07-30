@@ -9,8 +9,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 
@@ -119,7 +117,7 @@ public class US01InnoscriptaMainPageStepDefinitions {
     }
     @And("user clicks on {string} button in iframe")
     public void userClicksOnButtonInIframe(String arg0) {
-        BrowserUtils.waitFor(1);
+        BrowserUtils.waitForPageToLoad(5);
         BrowserUtils.clickElementInFrame(page.appointmentFrame, page.cookiesAblehnenButton);
     }
 
