@@ -1,16 +1,20 @@
 package com.innoscripta.runners;
 
+import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
 
 @CucumberOptions(
 
-        plugin = {},
-        features = { "src/test/resources/features"
-        },
+        plugin = {
+                "pretty",
+                "html:target/cucumber-report"
+                 },
+        features = { "src/test/resources/features/US01InnoscriptaMainPage.feature"},
         glue = "com/innoscripta/stepdefinitions",
-//        tags = "@smoke",
-        dryRun = false
+//        tags = "@fail",
+        dryRun = false,
+        monochrome = true
 )
-public class CukesRunner {
+public class CukesRunner extends AbstractTestNGCucumberTests {
 
 }

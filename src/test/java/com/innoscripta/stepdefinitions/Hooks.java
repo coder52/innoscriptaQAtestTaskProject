@@ -21,7 +21,7 @@ public class Hooks {
     public void tearDown(Scenario scenario){
         if (scenario.isFailed()){
             final byte[] screenShot = ((TakesScreenshot)Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenShot,"image/png", scenario.getName()+"_screenshot");
+            scenario.embed(screenShot,"image/png", scenario.getName()+"_screenshot");
 
         }
         BrowserUtils.waitFor(3);
