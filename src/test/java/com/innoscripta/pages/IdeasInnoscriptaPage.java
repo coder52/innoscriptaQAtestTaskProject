@@ -26,7 +26,7 @@ public class IdeasInnoscriptaPage extends BasePage{
     @FindBy(css = "#terms-checkbox")
     public WebElement termsCheckbox;
 
-    @FindBy(css = "#terms-checkbox")
+    @FindBy(css = "#account-created h4")
     public WebElement accountCreatedText;
 
     @FindBy(css = "#professor-modal")
