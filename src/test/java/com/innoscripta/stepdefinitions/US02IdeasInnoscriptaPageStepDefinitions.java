@@ -65,7 +65,9 @@ public class US02IdeasInnoscriptaPageStepDefinitions {
 
     @Then("user verifies that his account has been successfully created")
     public void userVerifiesThatHisAccountHasBeenSuccessfullyCreated() {
+        BrowserUtils.waitFor(2);
         String text = page.accountCreatedText.getText();
+        System.out.println(text);
         Assert.assertTrue(text.contains("erfolgreich"));
     }
 
