@@ -15,7 +15,7 @@ import org.testng.Assert;
 import java.util.List;
 import java.util.Map;
 
-public class US02IdeasInnoscriptaPage {
+public class US02IdeasInnoscriptaPageStepDefinitions {
 
     IdeasInnoscriptaPage page = new IdeasInnoscriptaPage();
 
@@ -60,6 +60,7 @@ public class US02IdeasInnoscriptaPage {
     @And("user agrees to the terms of use")
     public void userAgreesToTheTermsOfUse() {
         page.termsCheckbox.click();
+        BrowserUtils.waitFor(1);
     }
 
     @Then("user verifies that his account has been successfully created")
