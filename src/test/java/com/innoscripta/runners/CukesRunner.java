@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
                 "pretty",
                 "html:target/cucumber-report"
                  },
-        features = { "src/test/resources/features/US01InnoscriptaMainPage.feature"},
+        features = { "src/test/resources/features/"},
         glue = "com/innoscripta/stepdefinitions",
 //        tags = "@fail",
         dryRun = false,
