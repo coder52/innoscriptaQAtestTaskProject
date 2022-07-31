@@ -37,7 +37,6 @@ public class US01InnoscriptaMainPageStepDefinitions {
         BrowserUtils.clickOnElementWithJS(jsPath);
     }
 
-
     @Then("user clicks menu items on header and verifies that the screen slides to the proper position")
     public void userClicksOnHeader(DataTable table) {
         List<List<String>> rows = table.asLists(String.class);
@@ -48,7 +47,7 @@ public class US01InnoscriptaMainPageStepDefinitions {
                     case "Unsere Leistungen":
                         page.unsereLeistungenMenuItem.click();
                         BrowserUtils.waitFor(3);
-                        classNames = page.unsereLeistungenMenuItem.getAttribute("class");//getCssValue(cssStr);
+                        classNames = page.unsereLeistungenMenuItem.getAttribute("class");
                         break;
                     case "innoscripta logo":
                         page.logoInnoscriptaMenuItem.click();
@@ -114,9 +113,8 @@ public class US01InnoscriptaMainPageStepDefinitions {
     @Then("user clicks on {string} button")
     public void userClicksOnButton(String buttonText) {
         Driver.getDriver().findElement(By.xpath("//*[. = '"+buttonText+"']")).click();
-
-
     }
+
     @And("user clicks on {string} button in iframe")
     public void userClicksOnButtonInIframe(String arg0) {
         BrowserUtils.waitFor(2);
