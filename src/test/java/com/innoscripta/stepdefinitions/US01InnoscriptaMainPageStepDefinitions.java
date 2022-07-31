@@ -26,6 +26,7 @@ public class US01InnoscriptaMainPageStepDefinitions {
     @When("user clicks {string} on privacy settings window")
     public void userClicksOnPrivacySettingsWindow(String privacySelection) {
         BrowserUtils.waitForPageToLoad(5);
+        BrowserUtils.waitFor(1);
         String denyJSPath = "document.querySelector(\"#usercentrics-root\").shadowRoot." +
                 "querySelector(\"#uc-center-container > div.sc-bYoBSM.egarKh > div > div.sc-dlVxhl.bEDIID > " +
                 "div > button:nth-child(1)\")";
@@ -105,6 +106,7 @@ public class US01InnoscriptaMainPageStepDefinitions {
     @Then("user verifies that {string} opened")
     public void userVerifiesThatOpened(String url) {
         BrowserUtils.waitForPageToLoad(5);
+        BrowserUtils.waitFor(1);
         String currentUrl = Driver.getDriver().getCurrentUrl();
         Assert.assertTrue(currentUrl.contains(url));
     }
@@ -117,7 +119,7 @@ public class US01InnoscriptaMainPageStepDefinitions {
     }
     @And("user clicks on {string} button in iframe")
     public void userClicksOnButtonInIframe(String arg0) {
-        BrowserUtils.waitForPageToLoad(5);
+        BrowserUtils.waitFor(2);
         BrowserUtils.clickElementInFrame(page.appointmentFrame, page.cookiesAblehnenButton);
     }
 
