@@ -563,7 +563,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPage.userClicksOnHeader(io.cucumber.datatable.DataTable)"
+  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPageStepDefinitions.userClicksOnHeader(io.cucumber.datatable.DataTable)"
 });
 formatter.result({
   "status": "passed"
@@ -626,7 +626,7 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPage.userFillsOutTheCreateAccountForm(io.cucumber.datatable.DataTable)"
+  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPageStepDefinitions.userFillsOutTheCreateAccountForm(io.cucumber.datatable.DataTable)"
 });
 formatter.result({
   "status": "passed"
@@ -636,7 +636,7 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPage.userSelectsWithMausThatTextInputsOfAnredeAndTitelInForm()"
+  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPageStepDefinitions.userSelectsWithMausThatTextInputsOfAnredeAndTitelInForm()"
 });
 formatter.result({
   "status": "passed"
@@ -656,7 +656,7 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPage.userAgreesToTheTermsOfUse()"
+  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPageStepDefinitions.userAgreesToTheTermsOfUse()"
 });
 formatter.result({
   "status": "passed"
@@ -676,13 +676,11 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPage.userVerifiesThatHisAccountHasBeenSuccessfullyCreated()"
+  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPageStepDefinitions.userVerifiesThatHisAccountHasBeenSuccessfullyCreated()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: expected [true] but found [false]\r\n\tat org.testng.Assert.fail(Assert.java:96)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:776)\r\n\tat org.testng.Assert.assertTrue(Assert.java:44)\r\n\tat org.testng.Assert.assertTrue(Assert.java:54)\r\n\tat com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPage.userVerifiesThatHisAccountHasBeenSuccessfullyCreated(US02IdeasInnoscriptaPage.java:68)\r\n\tat ✽.user verifies that his account has been successfully created(file:///C:/Users/Sahin/IdeaProjects/innoscriptaQAtestTaskProject/src/test/resources/features/US02IdeasInnoscriptaPage.feature:23)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
-formatter.embedding("image/png", "embedded1.png", "TC02_US02 It should be possible to register using the \"Registrieren\" button._screenshot");
 formatter.after({
   "status": "passed"
 });
@@ -741,7 +739,7 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPage.userFillsOutTheCreateAccountForm(io.cucumber.datatable.DataTable)"
+  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPageStepDefinitions.userFillsOutTheCreateAccountForm(io.cucumber.datatable.DataTable)"
 });
 formatter.result({
   "status": "passed"
@@ -751,7 +749,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPage.userEntersTextToInputsOfAnredeAndTitelInForm()"
+  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPageStepDefinitions.userEntersTextToInputsOfAnredeAndTitelInForm()"
 });
 formatter.result({
   "status": "passed"
@@ -771,13 +769,13 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPage.userVerifiesThatTheFormHasBeenSuccessfullyFilled()"
+  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPageStepDefinitions.userVerifiesThatTheFormHasBeenSuccessfullyFilled()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: expected [true] but found [false]\r\n\tat org.testng.Assert.fail(Assert.java:96)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:776)\r\n\tat org.testng.Assert.assertTrue(Assert.java:44)\r\n\tat org.testng.Assert.assertTrue(Assert.java:54)\r\n\tat com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPage.userVerifiesThatTheFormHasBeenSuccessfullyFilled(US02IdeasInnoscriptaPage.java:85)\r\n\tat ✽.user verifies that the form has been successfully filled(file:///C:/Users/Sahin/IdeaProjects/innoscriptaQAtestTaskProject/src/test/resources/features/US02IdeasInnoscriptaPage.feature:35)\r\n",
+  "error_message": "java.lang.AssertionError: expected [true] but found [false]\r\n\tat org.testng.Assert.fail(Assert.java:96)\r\n\tat org.testng.Assert.failNotEquals(Assert.java:776)\r\n\tat org.testng.Assert.assertTrue(Assert.java:44)\r\n\tat org.testng.Assert.assertTrue(Assert.java:54)\r\n\tat com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPageStepDefinitions.userVerifiesThatTheFormHasBeenSuccessfullyFilled(US02IdeasInnoscriptaPageStepDefinitions.java:88)\r\n\tat ✽.user verifies that the form has been successfully filled(file:///C:/Users/Sahin/IdeaProjects/innoscriptaQAtestTaskProject/src/test/resources/features/US02IdeasInnoscriptaPage.feature:35)\r\n",
   "status": "failed"
 });
-formatter.embedding("image/png", "embedded2.png", "TC03_US02 All input boxes in the Create an account form should be able to enter text._screenshot");
+formatter.embedding("image/png", "embedded1.png", "TC03_US02 All input boxes in the Create an account form should be able to enter text._screenshot");
 formatter.after({
   "status": "passed"
 });
@@ -839,7 +837,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPage.userVerifiesThatFormFillingProcessIsCanceled()"
+  "location": "com.innoscripta.stepdefinitions.US02IdeasInnoscriptaPageStepDefinitions.userVerifiesThatFormFillingProcessIsCanceled()"
 });
 formatter.result({
   "status": "passed"
