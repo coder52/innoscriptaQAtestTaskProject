@@ -21,7 +21,7 @@ Feature: US02 The functions of the elements in the ideas.innoscripta page should
     And user agrees to the terms of use
     When user clicks on "Einreichen" button
     Then user verifies that his account has been successfully created
-
+  @fail
   Scenario: TC03_US02 All input boxes in the Create an account form should be able to enter text.
     Then user clicks on "Registrieren" button
     And user fills out the Create account form
