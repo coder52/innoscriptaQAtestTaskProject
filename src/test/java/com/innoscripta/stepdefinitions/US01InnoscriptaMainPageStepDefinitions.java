@@ -10,8 +10,12 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 
@@ -117,8 +121,11 @@ public class US01InnoscriptaMainPageStepDefinitions {
 
     @And("user clicks on {string} button in iframe")
     public void userClicksOnButtonInIframe(String arg0) {
-        BrowserUtils.waitFor(2);
-        BrowserUtils.clickElementInFrame(page.appointmentFrame, page.cookiesAblehnenButton);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
+        Driver.getDriver().switchTo().frame(page.appointmentFrameElement);
+        wait.until(ExpectedConditions.elementToBeClickable(page.cookiesAblehnenButtonElement));
+        page.cookiesAblehnenButtonElement.click();
+        Driver.getDriver().switchTo().parentFrame();
     }
 
     @And("user clicks to today&time on calendar and accepts appointment")
