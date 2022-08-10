@@ -10,6 +10,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.util.List;
@@ -17,6 +19,7 @@ import java.util.Map;
 
 public class US01InnoscriptaMainPageStepDefinitions {
     InnoscriptaMainPage page = new InnoscriptaMainPage();
+    WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
 
     @Given("user is on page {string}")
     public void user_is_on_page(String url) {
@@ -117,8 +120,10 @@ public class US01InnoscriptaMainPageStepDefinitions {
 
     @And("user clicks on {string} button in iframe")
     public void userClicksOnButtonInIframe(String arg0) {
-        BrowserUtils.waitFor(2);
-        BrowserUtils.clickElementInFrame(page.appointmentFrame, page.cookiesAblehnenButton);
+        Driver.getDriver().switchTo().frame(page.appointmentFrame);
+        wait.until(ExpectedConditions.elementToBeClickable(page.cookiesAblehnenButton));
+        page.cookiesAblehnenButton.click();
+        Driver.getDriver().switchTo().parentFrame();
     }
 
     @And("user clicks to today&time on calendar and accepts appointment")
@@ -182,6 +187,7 @@ public class US01InnoscriptaMainPageStepDefinitions {
 
     @Then("user verifies that appointment is booked")
     public void userVerifiesThatAppointmentIsBooked() {
+        wait.until(ExpectedConditions.visibilityOf(page.appointmentAcceptedText));
         String text = page.appointmentAcceptedText.getText();
         Assert.assertTrue(text.toLowerCase().contains("bestätigt"));
     }

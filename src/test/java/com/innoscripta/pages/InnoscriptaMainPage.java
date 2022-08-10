@@ -38,8 +38,11 @@ public class InnoscriptaMainPage extends BasePage{
     @FindBy(xpath = "//a[. = 'Willkommen']")
     public WebElement willkommenMenuItem;
 
-    public By cookiesAblehnenButton = By.cssSelector("div #onetrust-reject-all-handler");
-    public By appointmentFrame = By.cssSelector("div.calendly-popup iframe");
+    @FindBy(css = "div #onetrust-reject-all-handler")
+    public WebElement cookiesAblehnenButton;
+
+    @FindBy(css = "div.calendly-popup iframe")
+    public WebElement appointmentFrame;
 
     @FindBy(css = "td button[type='button']")
     public List<WebElement> daysInCalendar;
