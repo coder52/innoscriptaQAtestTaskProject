@@ -122,6 +122,7 @@ public class US01InnoscriptaMainPageStepDefinitions {
     public void userClicksOnButtonInIframe(String arg0) {
         Driver.getDriver().switchTo().frame(page.appointmentFrame);
         wait.until(ExpectedConditions.elementToBeClickable(page.cookiesAblehnenButton));
+        BrowserUtils.waitFor(3);
         page.cookiesAblehnenButton.click();
         Driver.getDriver().switchTo().parentFrame();
     }
